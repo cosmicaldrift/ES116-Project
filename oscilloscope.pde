@@ -8,7 +8,6 @@ int[] buffer2;
 int bufferSize = 500;
 int bufferIndex = 0;
 
-// Scaling factors
 float xScale = 1.0;  
 float yScale = 1.0;  
 float yOffset = 0.0; 
@@ -16,7 +15,7 @@ float yOffset = 0.0;
 void setup() {
   size(800, 400);
   printArray(Serial.list());
-  String portName = "/dev/cu.usbmodem141011"; // Replace with port name
+  String portName = "/dev/cu.usbmodem141011"; 
   myPort = new Serial(this, portName, 115200);
   myPort.bufferUntil('\n');
 
@@ -46,8 +45,8 @@ void draw() {
   }
 
   stroke(100);
-  line(0, height / 2, width, height / 2);  // Horizontal center axis
-  line(width / 2, 0, width / 2, height);   // Vertical center axis
+  line(0, height / 2, width, height / 2);  
+  line(width / 2, 0, width / 2, height);   
 
   int min1 = 1023, max1 = 0;
   int min2 = 1023, max2 = 0;
@@ -57,8 +56,8 @@ void draw() {
     if (buffer2[i] < min2) min2 = buffer2[i];
     if (buffer2[i] > max2) max2 = buffer2[i];
   }
-  float vpp1 = (max1 - min1) * (5.0 / 1023.0);  // Scale to 0-5V range
-  float vpp2 = (max2 - min2) * (5.0 / 1023.0);  // Scale to 0-5V range
+  float vpp1 = (max1 - min1) * (5.0 / 1023.0);  
+  float vpp2 = (max2 - min2) * (5.0 / 1023.0);  
 
   fill(0, 0, 0, 150);
   stroke(255);
@@ -134,19 +133,18 @@ void serialEvent(Serial p) {
 
 void keyPressed() {
   if (key == '+') {
-    xScale *= 1.1;  // Increase horizontal scale (zoom in)
+    xScale *= 1.1; 
   } else if (key == '-') {
-    xScale *= 0.9;  // Decrease horizontal scale (zoom out)
+    xScale *= 0.9;  
   } else if (key == 'w' || key == 'W') {
-    yScale *= 1.1;  // Increase vertical scale (zoom in)
+    yScale *= 1.1;  
   } else if (key == 's' || key == 'S') {
-    yScale *= 0.9;  // Decrease vertical scale (zoom out)
+    yScale *= 0.9; 
   } else if (keyCode == UP) {
-    yOffset -= 10;  // Move the waveform up
+    yOffset -= 10;  
   } else if (keyCode == DOWN) {
-    yOffset += 10;  // Move the waveform down
+    yOffset += 10;  
   } else if (key == 'r' || key == 'R') {
-    // Reset scaling and vertical offset
     xScale = 1.0;
     yScale = 1.0;
     yOffset = 0.0;
