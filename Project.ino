@@ -1,12 +1,12 @@
 const int ch1Pin = A0;
 const int ch2Pin = A1;
-const int toggleCh1Pin = 4;    // Used for switch 1 to toggle A0 monitoring
-const int toggleCh2Pin = 1;    // Used for switch 2 to toggle A1 monitoring
-const int LED_CH1 = 6;         // LED used to display A0 activity
-const int LED_CH2 = 5;         // LED used to display A1 activity
+const int toggleCh1Pin = 4;   
+const int toggleCh2Pin = 1;   
+const int LED_CH1 = 6;       
+const int LED_CH2 = 5;     
 
-bool prevCh1BtnState = HIGH; // Used to convert button to switch
-bool prevCh2BtnState = HIGH; // Used to convert button to switch
+bool prevCh1BtnState = HIGH;
+bool prevCh2BtnState = HIGH; 
 bool ch1Enabled = false;
 bool ch2Enabled = false;
 
